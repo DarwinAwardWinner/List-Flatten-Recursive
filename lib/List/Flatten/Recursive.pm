@@ -82,7 +82,7 @@ This document describes List::Flatten::Recursive version 0.0.1
 =head1 DESCRIPTION
 
 If you think of nested lists as a tree structure (an in Lisp, for
-example), then c<flat> basically returns all the leaf nodes from an
+example), then B<flat> basically returns all the leaf nodes from an
 inorder tree traversal, and leaves out the internal nodes (i.e.
 listrefs).
 
@@ -100,12 +100,12 @@ B<Arguments:> a list or listref
 B<Returns:> the same list, with each array reference replaced by the
 contents of the list to which it refers.
 
-Unlike C<List::Flatten::flat>, this function works recursively. Array
+Unlike B<List::Flatten::flat>, this function works recursively. Array
 references within array references are interpolated. Circular
 references are detected, and a circular reference interpolates to an
 empty list (that is, it it omitted).
 
-C<flat> is exported only by request.
+B<flat> is exported only by request.
 
 =head1 DIAGNOSTICS
 
