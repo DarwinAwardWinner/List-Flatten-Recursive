@@ -1,20 +1,20 @@
 #!perl
-# -*- mode: sepia -*-
-use Test::Simple tests => 2;
+use Test::More;
+use Test::Deep;
 use List::Flatten::Recursive;
 use v5.10;
 
-#use Smart::Comments;
-
+# Construct the flat version
 my @flat_list_of_one = ( 1 );
+
+# Construct the non-flat version
 my $scalar = 1;
 
-# Now flatten!
-my @flattened_list = List::Flatten::Recursive::flat($scalar);
-### @flattened_list
+# Flatten and compare
+cmp_deeply(
+    [ flat($scalar) ],
+    \@flat_list_of_one,
+    "Flatten scalar."
+);
 
-# Test
-ok( scalar(@flattened_list) == scalar(@flat_list_of_one),
-    'flattened list has correct length' );
-ok( @flattened_list ~~ @flat_list_of_one,
-    'flattened list has correct contents' );
+done_testing();

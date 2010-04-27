@@ -1,24 +1,20 @@
 #!perl
-# -*- mode: sepia -*-
-use Test::Simple tests => 2;
+use Test::More;
+use Test::Deep;
 use List::Flatten::Recursive;
 use v5.10;
 
-#use Smart::Comments;
-
 my @flat_list = ( 1..10 );
-### @flat_list
 
-my $circular_listref = [];
-push @$circular_listref, 1..5, $circular_listref, 6..10;
-### $circular_listref
+my $circ1 = [ 1..5 ];
+my $circ2 = [ 6..10 ];
+push @$circ1, $circ2;
+push @$circ2, $circ1;
 
-# Now flatten!
-my @flattened_circular_listref = List::Flatten::Recursive::flat($circular_listref);
-### @flattened_circular_listref
+cmp_deeply(
+    [ flat($circ1) ],
+    \@flat_list,
+    "Flatten circular listrefs."
+);
 
-# Test
-ok( scalar(@flattened_circular_listref) == scalar(@flat_list),
-    'flattened circular listref has correct length' );
-ok( @flattened_circular_listref ~~ @flat_list,
-    'flattened circular listref has correct contents' );
+done_testing();
