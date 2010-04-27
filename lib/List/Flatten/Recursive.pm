@@ -105,6 +105,16 @@ references within array references are interpolated. Circular
 references are detected, and a circular reference interpolates to an
 empty list (that is, it it omitted).
 
+Note that B<flat> always returns a list. Even if you call it on a scalar, it returns a one-element list containing that scalar. This is because it is impossible to disambiguate the following:
+
+    # Call on a scalar
+    flat( 1 );
+
+    # Call on a one-element list:
+    flat( (1) );
+
+In principle, B<flat> could be modified to return a scalar instead of a one-element list in scalar context, but that would defeat the C<scalar(@list)> idiom for counting the number of elements in a list.
+
 B<flat> is exported only by request.
 
 =head1 DIAGNOSTICS
