@@ -6,23 +6,29 @@ use utf8;
 package List::Flatten::Recursive;
 # ABSTRACT: List::Flatten with recursion
 
-
 require Exporter::Simple;
 use base qw(Exporter::Simple);
 
+use List::MoreUtils qw(any);
+
 sub _flat {
+    # Args: first arg is thing to flatten,
+    # rest are already seen lists
     my $list = shift;
+    my @seen_lists = @_;
+
     if (ref $list ne 'ARRAY') {
-        # Already flat:
+        # Already flat (i.e. leaf node):
         return $list;
     }
-    elsif (grep { $_ == $list } @_) {
+    elsif (any { $_ == $list } @seen_lists) {
         # Already seen this list: skip
         return;
     }
     else {
-        # New list: flatten each element recursively
-        return map { _flat($_, $list, @_) } @{$list};
+        # New list: flatten each element recursively, with $list as
+        # another seen list
+        return map { _flat($_, $list, @seen_lists) } @{$list};
     }
 }
 
@@ -65,26 +71,41 @@ __END__
     flat($crazy_listref); # Yields (1,2,3,4)
     push @$crazy_listref, $crazy_listref; # Now it contains itself!
     flat($crazy_listref); # Still yields (1,2,3,4)
+    flat([ $crazy_listref ]); # Ditto.
+
+    # But don't do this.
+    flat(@$crazy_listref); # Will not yield the same as above.
 
 =head1 DESCRIPTION
 
 If you think of nested lists as a tree structure (an in Lisp, for
 example), then B<flat> basically returns all the leaf nodes from an
 inorder tree traversal, and leaves out the internal nodes (i.e.
-listrefs).
+listrefs). If the nested list is a DAG instead of just a tree, it
+should still flatten correctly (based on my own definition of
+correctness, of course; see also t/flatten-dag.t). If the nested list
+is self-referential, then any cycles will be broken by replacing
+ancestor references with empty lists.
 
 =head1 BUGS AND LIMITATIONS
 
-=head2 Self-referential lists must be flattened by reference
+=head2 Self-referential lists should be flattened by reference
 
-If you are going to flatten a list which may contain references to itself, you must pass a reference to that list to B<flat>, or else things will not work.
+If you are going to flatten a list which may contain references to
+itself, you must pass a reference to that list to B<flat>, or else
+things will not work the way you expect. You will end up with an extra
+trip around the circle before the circular reference is caught.
 
 =head2 B<flat> always returns a list
 
-Even if you call B<flat> on a single scalar, it will still return a list with one element in it. B<flatten_to_listref> would return a reference to a list with one element. This is by design.
+Even if you call B<flat> on a single scalar, it will still return a
+list with one element in it. B<flatten_to_listref> would return a
+reference to a list with one element. This is by design.
 
 Please report any bugs or feature requests to
-C<rct+perlbug@thompsonclan.org>.
+C<rct+perlbug@thompsonclan.org>. If you find a case where this module
+returns what you feel is a wrong result, please send an example that
+will cause it to do so, along with the actual and expected results.
 
 =head1 SEE ALSO
 
