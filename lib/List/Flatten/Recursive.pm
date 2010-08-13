@@ -34,9 +34,14 @@ sub _flat {
 
 =method flat
 
-This method flattens a list (or listref) recursively. It returns a list of all the non-list items contained anywhere in the input list or any of its sublists.
+This method flattens a list (or listref) recursively. It takes a list
+that may contain other sublists, and replaces those sublists with
+their contents, recursively, until the list no longer contains any
+sublists.
 
-B<flat> makes a best effort to avoid following circular references (that is, lists that contain references to themselves).
+B<flat> makes a best effort to break circular references (that is,
+lists that contain references to themselves), and should never enter
+an infinite recursion.
 
 This method is exported by default.
 
