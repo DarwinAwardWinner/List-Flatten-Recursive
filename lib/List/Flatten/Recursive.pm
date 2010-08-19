@@ -89,9 +89,14 @@ example), then B<flat> basically returns all the leaf nodes from an
 inorder tree traversal, and leaves out the internal nodes (i.e.
 listrefs). If the nested list is a DAG instead of just a tree, it
 should still flatten correctly (based on my own definition of
-correctness, of course; see also t/flatten-dag.t). If the nested list
-is self-referential, then any cycles will be broken by replacing
-ancestor references with empty lists.
+correctness, of course; see also t/flatten-dag.t).
+
+If the nested list is self-referential, then any cycles will be broken
+by replacing ancestor references with empty lists. However, the only
+behavior you should rely on when flattening a self-referential data
+structure is that infinite recursion should not occur, and each
+non-list element in the data structure should appear at least once in
+the output.
 
 =head1 BUGS AND LIMITATIONS
 
