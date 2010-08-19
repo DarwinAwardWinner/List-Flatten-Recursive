@@ -18,17 +18,18 @@ sub _flat {
     my @seen_lists = @_;
 
     if (ref $list ne 'ARRAY') {
-        # Already flat (i.e. leaf node):
+        # Already flat (i.e. leaf node)
+        # $list is not really a list, so just return it
         return $list;
     }
     elsif (any { $_ == $list } @seen_lists) {
-        # Already seen this list: skip
+        # Already recursed into this list, so skip it this time
         return;
     }
     else {
-        # New list: flatten each element recursively, with $list as
-        # another seen list
-        return map { _flat($_, $list, @seen_lists) } @{$list};
+        # New list: Add $list to @seen_lists, then dereference and recurse
+        push @seen_lists, $list;
+        return map { _flat($_, @seen_lists) } @{$list};
     }
 }
 
@@ -97,15 +98,18 @@ ancestor references with empty lists.
 =head2 Self-referential lists should be flattened by reference
 
 If you are going to flatten a list which may contain references to
-itself, you must pass a reference to that list to B<flat>, or else
+itself, you should pass a reference to that list to B<flat>, or else
 things will not work the way you expect. You will end up with an extra
 trip around the circle before the circular reference is caught.
 
 =head2 B<flat> always returns a list
 
 Even if you call B<flat> on a single scalar, it will still return a
-list with one element in it. B<flatten_to_listref> would return a
-reference to a list with one element. This is by design.
+list with one element in it. If called in scalar context, it will
+return the length of that list. B<flatten_to_listref> would return a
+reference to a list with one element. There is no case where the
+original scalar would be returned directly. This is by design. If you
+think this is wrong, email me and tell me why.
 
 Please report any bugs or feature requests to
 C<rct+perlbug@thompsonclan.org>. If you find a case where this module
