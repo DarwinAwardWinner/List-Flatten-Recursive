@@ -2,3 +2,4 @@ syntax:glob
 
 .build/
 List-Flatten-Recursive-*
+.build-timestamp
