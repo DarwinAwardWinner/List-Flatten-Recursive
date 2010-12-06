@@ -1,6 +1,6 @@
 # NAME
 
-List::Flatten::Recursive - List::Flatten with recursion
+List::Flatten::Recursive - [List::Flatten](http://search.cpan.org/perldoc?List::Flatten) with recursion
 
 # VERSION
 

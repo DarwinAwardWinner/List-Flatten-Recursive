@@ -4,7 +4,7 @@ use v5.10;
 use utf8;
 
 package List::Flatten::Recursive;
-# ABSTRACT: List::Flatten with recursion
+# ABSTRACT: L<List::Flatten> with recursion
 
 require Exporter::Simple;
 use base qw(Exporter::Simple);
