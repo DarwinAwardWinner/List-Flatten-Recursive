@@ -53,7 +53,7 @@ itself, you should pass a reference to that list to `flat`, or else
 things will not work the way you expect. You will end up with an extra
 trip around the circle before the circular reference is caught.
 
-## C<flat> always returns a list
+## `flat` always returns a list
 
 Even if you call `flat` on a single scalar, it will still return a
 list with one element in it. If called in scalar context, it will
