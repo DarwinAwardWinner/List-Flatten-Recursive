@@ -1,19 +1,10 @@
-This method flattens a list (or listref) recursively. It takes a list
-that may contain other sublists, and replaces those sublists with
-their contents, recursively, until the list no longer contains any
-sublists.
+# NAME
 
-`flat` makes a best effort to break circular references (that is,
-lists that contain references to themselves), and should never enter
-an infinite recursion.
+List::Flatten::Recursive - List::Flatten with recursion
 
-This method is exported by default.
+# VERSION
 
-Same as `flat`, but returns a single reference to the resulting list.
-
-This method is exported only by request. To use this method, put the following at the top of your program:
-
-    use List::Flatten::Recursive qw( flatten_to_listref );
+version 0.1.1
 
 # SYNOPSIS
 
@@ -44,6 +35,29 @@ structure is that infinite recursion should not occur, and each
 non-list element in the data structure should appear at least once in
 the output.
 
+# METHODS
+
+## flat
+
+This method flattens a list (or listref) recursively. It takes a list
+that may contain other sublists, and replaces those sublists with
+their contents, recursively, until the list no longer contains any
+sublists.
+
+`flat` makes a best effort to break circular references (that is,
+lists that contain references to themselves), and should never enter
+an infinite recursion.
+
+This method is exported by default.
+
+## flatten_to_listref
+
+Same as `flat`, but returns a single reference to the resulting list.
+
+This method is exported only by request. To use this method, put the following at the top of your program:
+
+    use List::Flatten::Recursive qw( flatten_to_listref );
+
 # BUGS AND LIMITATIONS
 
 ## Self-referential lists should be flattened by reference
@@ -69,6 +83,10 @@ will cause it to do so, along with the actual and expected results.
 
 # SEE ALSO
 
+- *
+
+[List::Flatten](http://search.cpan.org/perldoc?List::Flatten)
+
 # DISCLAIMER OF WARRANTY
 
 BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
@@ -91,3 +109,14 @@ RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
 FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
 SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGES.
+
+# AUTHOR
+
+Ryan C. Thompson <rct@thompsonclan.org>
+
+# COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Ryan C. Thompson.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
