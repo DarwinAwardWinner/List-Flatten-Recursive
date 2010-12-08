@@ -89,7 +89,7 @@ example), then C<flat> basically returns all the leaf nodes from an
 inorder tree traversal, and leaves out the internal nodes (i.e.
 listrefs). If the nested list is a DAG instead of just a tree, it
 should still flatten correctly (based on my own definition of
-correctness, of course; see also t/flatten-dag.t).
+correctness, of course; see also F<t/flatten-dag.t>).
 
 If the nested list is self-referential, then any cycles will be broken
 by replacing ancestor references with empty lists. However, the only
