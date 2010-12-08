@@ -1,4 +1,6 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+0.103420  2010-12-07 19:40:06 PST8PDT
     - First release on CPAN
