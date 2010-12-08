@@ -4,7 +4,7 @@ List::Flatten::Recursive - [List::Flatten](http://search.cpan.org/perldoc?List::
 
 # VERSION
 
-version 0.1.1
+version 0.103420
 
 # SYNOPSIS
 
@@ -83,9 +83,12 @@ will cause it to do so, along with the actual and expected results.
 
 # SEE ALSO
 
-- *
 
-[List::Flatten](http://search.cpan.org/perldoc?List::Flatten)
+
+
+
+* [List::Flatten](http://search.cpan.org/perldoc?List::Flatten)
+  The non-recursive insipiration for this module.
 
 # DISCLAIMER OF WARRANTY
 

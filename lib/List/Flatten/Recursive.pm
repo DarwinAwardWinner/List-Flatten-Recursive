@@ -124,7 +124,9 @@ will cause it to do so, along with the actual and expected results.
 =head1 SEE ALSO
 
 =for :list
+
 * L<List::Flatten>
+  The non-recursive insipiration for this module.
 
 =head1 DISCLAIMER OF WARRANTY
 
