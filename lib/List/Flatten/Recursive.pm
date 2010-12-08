@@ -41,8 +41,9 @@ their contents, recursively, until the list no longer contains any
 sublists.
 
 C<flat> makes a best effort to break circular references (that is,
-lists that contain references to themselves), and should never enter
-an infinite recursion.
+lists that contain references to themselves), so it should not enter
+infinite recursion. If you find a case that causes it to recurse
+infinitely, please inform me.
 
 This method is exported by default.
 
@@ -72,15 +73,19 @@ __END__
 =head1 SYNOPSIS
 
     use List::Flatten::Recursive qw( flat );
+    sub printlist { print '(' . join(', ', @_) . ")\n" }
 
     my $crazy_listref = [ 1, [ 2, 3 ], [ [ [ 4 ] ] ] ];
-    flat($crazy_listref); # Yields (1,2,3,4)
+    my @flattened = flat($crazy_listref); # Yields (1,2,3,4)
+    printlist(@flattened);
     push @$crazy_listref, $crazy_listref; # Now it contains itself!
-    flat($crazy_listref); # Still yields (1,2,3,4)
-    flat([ $crazy_listref ]); # Ditto.
-
-    # But don't do this.
-    flat(@$crazy_listref); # Will not yield the same as above.
+    @flattened = flat($crazy_listref);    # Still yields (1,2,3,4)
+    printlist(@flattened);
+    @flattened = flat([ $crazy_listref ]); # Ditto.
+    printlist(@flattened);
+    # But don't do this for self-referential lists.
+    @flattened = flat(@$crazy_listref); # Will not yield the same as above.
+    printlist(@flattened);
 
 =head1 DESCRIPTION
 
@@ -102,10 +107,14 @@ the output.
 
 =head2 Self-referential lists should be flattened by reference
 
-If you are going to flatten a list which may contain references to
+If you are going to flatten a list which might contain references to
 itself, you should pass a reference to that list to C<flat>, or else
 things will not work the way you expect. You will end up with an extra
-trip around the circle before the circular reference is caught.
+instance of each item in the outermost list. However, this will not
+result in infinite recursion.
+
+This module should never cause infinite recursion. If it does, please
+submit a bug report.
 
 =head2 C<flat> always returns a list
 
