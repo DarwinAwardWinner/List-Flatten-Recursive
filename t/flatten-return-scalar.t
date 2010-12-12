@@ -1,8 +1,6 @@
 #!perl
 use Test::More;
-
 use List::Flatten::Recursive;
-use v5.10;
 
 my @list = 1..10;
 my $expected_result = @list;       # Length of the list

@@ -2,7 +2,6 @@
 use Test::More;
 use Test::Deep;
 use List::Flatten::Recursive qw( flat flatten_to_listref );
-use v5.10;
 
 # Construct the non-flat version
 my @nonflat_list = (1, [2, 3], [4, [5, 6, [7,], 8, [9,]]], 10,);

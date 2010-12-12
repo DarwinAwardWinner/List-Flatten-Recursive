@@ -1,6 +1,5 @@
 #!perl
 use Test::More;
-# use Test::More tests => 3;
 use List::Flatten::Recursive;
 no warnings;
 

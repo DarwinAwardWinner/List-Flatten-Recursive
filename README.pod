@@ -6,7 +6,7 @@ List::Flatten::Recursive - L<List::Flatten> with recursion
 
 =head1 VERSION
 
-version 0.103440
+version 0.103460
 
 =head1 SYNOPSIS
 

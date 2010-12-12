@@ -1,6 +1,5 @@
 #!perl
 use Test::More;
-# use Test::More tests => 3;
 use List::Flatten::Recursive qw( flatten_to_listref );
 no warnings;
 

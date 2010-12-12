@@ -2,7 +2,6 @@
 use Test::More;
 use Test::Deep;
 use List::Flatten::Recursive;
-use v5.10;
 
 # Test flattening of lists containing multiple references to the same list. Earlier versions of LFR failed this test.
 

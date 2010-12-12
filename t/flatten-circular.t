@@ -2,7 +2,6 @@
 use Test::More;
 use Test::Deep;
 use List::Flatten::Recursive;
-use v5.10;
 
 my @flat_list = ( 1..10 );
 

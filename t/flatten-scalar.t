@@ -2,7 +2,6 @@
 use Test::More;
 use Test::Deep;
 use List::Flatten::Recursive;
-use v5.10;
 
 # Construct the flat version
 my @flat_list_of_one = ( 1 );
