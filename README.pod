@@ -6,7 +6,7 @@ List::Flatten::Recursive - L<List::Flatten> with recursion
 
 =head1 VERSION
 
-version 0.103460
+version 0.103470
 
 =head1 SYNOPSIS
 
@@ -41,12 +41,12 @@ structure is that infinite recursion should not occur, and each
 non-list element in the data structure should appear at least once in
 the output.
 
-=head1 METHODS
+=head1 FUNCTIONS
 
 =head2 flat
 
-This method flattens a list (or listref) recursively. It takes a list
-that may contain other sublists, and replaces those sublists with
+This function flattens a list (or listref) recursively. It takes a
+list that may contain other sublists, and replaces those sublists with
 their contents, recursively, until the list no longer contains any
 sublists.
 
@@ -55,13 +55,14 @@ lists that contain references to themselves), so it should not enter
 infinite recursion. If you find a case that causes it to recurse
 infinitely, please inform me.
 
-This method is exported by default.
+This function is exported by default.
 
 =head2 flatten_to_listref
 
 Same as C<flat>, but returns a single reference to the resulting list.
 
-This method is exported only by request. To use this method, put the following at the top of your program:
+This function is exported only by request. To use this function, put
+the following at the top of your program:
 
     use List::Flatten::Recursive qw( flatten_to_listref );
 
@@ -125,6 +126,10 @@ RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
 FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
 SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGES.
+
+=head1 INSTALLATION
+
+See perlmodinstall for information and options on installing Perl modules.
 
 =head1 AUTHOR
 

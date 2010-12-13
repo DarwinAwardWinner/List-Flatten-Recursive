@@ -32,10 +32,10 @@ sub _flat {
     }
 }
 
-=method flat
+=function flat
 
-This method flattens a list (or listref) recursively. It takes a list
-that may contain other sublists, and replaces those sublists with
+This function flattens a list (or listref) recursively. It takes a
+list that may contain other sublists, and replaces those sublists with
 their contents, recursively, until the list no longer contains any
 sublists.
 
@@ -44,7 +44,7 @@ lists that contain references to themselves), so it should not enter
 infinite recursion. If you find a case that causes it to recurse
 infinitely, please inform me.
 
-This method is exported by default.
+This function is exported by default.
 
 =cut
 
@@ -52,11 +52,12 @@ sub flat : Exported {
     return _flat(\@_);
 }
 
-=method flatten_to_listref
+=function flatten_to_listref
 
 Same as C<flat>, but returns a single reference to the resulting list.
 
-This method is exported only by request. To use this method, put the following at the top of your program:
+This function is exported only by request. To use this function, put
+the following at the top of your program:
 
     use List::Flatten::Recursive qw( flatten_to_listref );
 
