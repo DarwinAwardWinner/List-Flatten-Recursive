@@ -6,7 +6,7 @@ List::Flatten::Recursive - L<List::Flatten> with recursion
 
 =head1 VERSION
 
-version 0.103510
+version 0.111290
 
 =head1 SYNOPSIS
 
@@ -89,7 +89,7 @@ original scalar would be returned directly. This is by design. If you
 think this is wrong, email me and tell me why.
 
 Please report any bugs or feature requests to
-C<rct+perlbug@thompsonclan.org>. If you find a case where this module
+L<rct+perlbug@thompsonclan.org>. If you find a case where this module
 returns what you feel is a wrong result, please send an example that
 will cause it to do so, along with the actual and expected results.
 
@@ -102,6 +102,7 @@ will cause it to do so, along with the actual and expected results.
 =back
 
 * L<List::Flatten>
+
   The non-recursive insipiration for this module.
 
 =head1 INSTALLATION
@@ -114,7 +115,7 @@ Ryan C. Thompson <rct@thompsonclan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Ryan C. Thompson.
+This software is copyright (c) 2011 by Ryan C. Thompson.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

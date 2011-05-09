@@ -126,7 +126,7 @@ original scalar would be returned directly. This is by design. If you
 think this is wrong, email me and tell me why.
 
 Please report any bugs or feature requests to
-C<rct+perlbug@thompsonclan.org>. If you find a case where this module
+L<rct+perlbug@thompsonclan.org>. If you find a case where this module
 returns what you feel is a wrong result, please send an example that
 will cause it to do so, along with the actual and expected results.
 
@@ -135,4 +135,5 @@ will cause it to do so, along with the actual and expected results.
 =for :list
 
 * L<List::Flatten>
+
   The non-recursive insipiration for this module.
