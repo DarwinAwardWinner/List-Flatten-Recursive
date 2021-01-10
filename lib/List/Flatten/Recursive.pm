@@ -5,8 +5,17 @@ use utf8;
 package List::Flatten::Recursive;
 # ABSTRACT: L<List::Flatten> with recursion
 
-require Attribute::Exporter;
-use base qw(Attribute::Exporter);
+require Exporter;
+our (@ISA, @EXPORT, @EXPORT_OK, %EXPORT_TAGS);
+BEGIN {
+    @ISA = qw(Exporter);
+    @EXPORT = qw(flat);
+    @EXPORT_OK = qw(flat flatten_to_listref);
+    %EXPORT_TAGS = (
+        default => [@EXPORT],
+        all => [@EXPORT, @EXPORT_OK],
+    );
+}
 
 use List::MoreUtils qw(any);
 
@@ -48,7 +57,7 @@ This function is exported by default.
 
 =cut
 
-sub flat :export_def {
+sub flat {
     return _flat(\@_);
 }
 
@@ -63,7 +72,7 @@ the following at the top of your program:
 
 =cut
 
-sub flatten_to_listref :export_ok {
+sub flatten_to_listref {
     return [ flat(@_) ];
 }
 

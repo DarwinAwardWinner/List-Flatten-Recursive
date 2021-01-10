@@ -1,6 +1,7 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - Remove CPAN dependency on Attribute::Exporter
 
 0.103460  2010-12-12 01:37:17 PST8PDT
     - Removed unnecessary dependency on Perl v5.10
